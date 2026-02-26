@@ -54,6 +54,12 @@ function Food({ cambiarVista })
             image="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/01ba4055304209.5a920aa646405.png"
             onVerDetalle={() => cambiarVista("detalle")}
         />
+
+        <MovieCard
+            title="Chocolate"
+            image="https://static.vecteezy.com/system/resources/thumbnails/052/933/218/small/chocolate-bar-isolated-on-a-transparent-background-free-png.png"
+            onVerDetalle={() => cambiarVista("detalle")}
+        />
     </main>
   );
 }

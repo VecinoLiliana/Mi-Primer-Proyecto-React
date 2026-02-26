@@ -27,6 +27,10 @@ export default function Header({cambiarVista}) {
           <span style={{cursor:"pointer"}} onClick={() => cambiarVista("otros")}>
             Otros
           </span>
+
+          <span style={{cursor:"pointer"}} onClick={() => cambiarVista("tickets")}>
+            Compra en línea
+          </span>
         </nav>
         </div>
     </header>

@@ -1,12 +1,21 @@
 //Botón reutilizable importado
 import Button from "./Button";
 
-function MovieCard({ title, image, onVerDetalle }) 
+function MovieCard({ 
+  title, 
+  image, 
+  onVerDetalle, 
+  pelicula
+}) 
 {
   return(
     <div
-      style={{ border: "1px solid #ddd", borderRadius: "8px", overflow:"hidden", boxShadow:"0 2px 6px rgba(0,0,0,0.1)"
-      }}>
+      style={{ 
+        border: "1px solid #ddd", 
+        borderRadius: "8px", 
+        overflow:"hidden",
+      }}
+    >
         <img
           src={image}
           alt={title}
@@ -14,8 +23,11 @@ function MovieCard({ title, image, onVerDetalle })
 
           <div style={{ padding:"12px", textAlign:"center" }}>
             <h3>{title}</h3>
-
-            <Button text="Ver detalle" OnClick={onVerDetalle}/>
+            
+            <Button 
+              text="Ver detalle" 
+              OnClick={() => onVerDetalle()}
+            />
           </div>
     </div>
   );
