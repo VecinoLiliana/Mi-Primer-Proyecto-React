@@ -1,9 +1,11 @@
 import "./App.css";
 // Hook de React para manejar estado y efectos
 import { useState, useEffect } from "react"
+import { Routes, Route } from "react-router-dom";
 
 // Componentes
 import Header from "./components/Header"
+import Footer from "./components/Footer"
 
 // Vistas
 import Home from "./pages/Home"
@@ -12,6 +14,8 @@ import Detalle from "./pages/Detalle"
 import Food from "./pages/Food"
 import Otros from "./pages/Otros"
 import Tickets from "./pages/tickets"
+import DetallePelicula from "./pages/DetallePelicula"
+import NotFound from "./pages/NotFound"
 
 // Datos
 import peliculasData from "./data/peliculas.json"
@@ -83,44 +87,20 @@ function App() {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      {/* Header controla navegación principal */}
-      <Header cambiarVista={setVistaActual} />
+      <Header />
 
-      {/* Renderizado condicional, el triple "=" es para asegurar que solo se cumpla la condición si es exactamente igual */}
-      {vistaActual === "home" && (
-        <Home verDetalle={verDetalle} />
-      )}
+      {/* Sistema de rutas de React Router */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cartelera" element={<Cartelera />} />
+        <Route path="/alimentos" element={<Food />} />
+        <Route path="/otros" element={<Otros />} />
+        <Route path="/tickets" element={<Tickets datos={formularioEnviado} cambiarVista={setVistaActual} />} />
+        <Route path="/pelicula/:id" element={<DetallePelicula />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
-      {vistaActual === "cartelera" && (
-        <Cartelera verDetalle={verDetalle} />
-      )}
-
-      {vistaActual === "detalle" && (
-        <Detalle 
-          pelicula={peliculaSeleccionada}
-          peliculasFavoritas={peliculasFavoritas}
-          toggleFavorito={toggleFavorito}
-        />
-      )}
-
-      {vistaActual === "food" && (
-        <Food 
-          elementoActivo={elementoActivo}
-          seleccionarElemento={seleccionarElemento}
-        />
-      )}
-
-      {vistaActual === "otros" && (
-        <Otros 
-          elementoActivo={elementoActivo}
-          seleccionarElemento={seleccionarElemento}
-        />
-      )}
-
-      {vistaActual === "tickets" && (
-        <Tickets datos={formularioEnviado} cambiarVista={setVistaActual} />
-      )}
-
+      <Footer />
     </div>
   )
 }

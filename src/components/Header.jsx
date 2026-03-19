@@ -1,38 +1,53 @@
-export default function Header({cambiarVista}) {
+import { NavLink } from "react-router-dom";
+
+function Header() {
+  const activeStyle = {
+    color: "#ffffff",
+    fontWeight: "bold",
+    borderBottom: "2px solid #ffffff",
+  };
+
+  const linkStyle = {
+    color: "#ffffff",
+    textDecoration: "none",
+    padding: "8px 12px",
+  };
+
   return (
     <header
-      style={{ boxSizing: "Border-box", backgroundColor: "#f583b6ff", width:"100%", //ocupa todo el ancho de la pantalla (100%)
+      style={{
+        backgroundColor: "#f583b6ff",
+        padding: "16px 24px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <h1 style={{ color: "white", margin: 0 }}>CinePrueba</h1>
 
-      }}>
-        {/* Contenedor interno para ordenar contenido */}
-        <div style={{display: "flex", justifyContent:"space-between", alignItems:"center", padding: "16px 24px", 
-          maxWidth:"1400px", margin:"0 auto"
-        }}
-       >
-        <h1 style={{ margin: 0 }}>CinePrueba</h1>
+      <nav style={{ display: "flex", gap: "12px" }}>
+        <NavLink to="/" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>
+          Home
+        </NavLink>
 
-        <nav style={{display: "flex", gap:"24px"}}>
-          <span style={{cursor:"pointer"}} onClick={() => cambiarVista("home")}>
-            Inicio
-          </span>
+        <NavLink to="/cartelera" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>
+          Cartelera
+        </NavLink>
 
-          <span style={{cursor:"pointer"}} onClick={() => cambiarVista("cartelera")}> 
-            Cartelera
-          </span>
+        <NavLink to="/alimentos" style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>
+          Comida
+        </NavLink>
 
-          <span style={{cursor:"pointer"}} onClick={() => cambiarVista("food")}>
-            Comida
-          </span>
-          
-          <span style={{cursor:"pointer"}} onClick={() => cambiarVista("otros")}>
-            Otros
-          </span>
+        <NavLink to="/otros"  style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>
+          Otros
+        </NavLink>
 
-          <span style={{cursor:"pointer"}} onClick={() => cambiarVista("tickets")}>
-            Compra en línea
-          </span>
-        </nav>
-        </div>
+        <NavLink to="/tickets"  style={({ isActive }) => (isActive ? { ...linkStyle, ...activeStyle } : linkStyle)}>
+          Tickets
+        </NavLink>
+      </nav>
     </header>
   );
 }
+
+export default Header;

@@ -1,7 +1,7 @@
 import MovieCard from "../components/MovieCard";
 import peliculasData from "../data/peliculas.json"; 
 
-function Home({ verDetalle }) {
+function Home() {
   // Obtener películas del JSON
   const peliculas = peliculasData.peliculas.filter(p => p.destacada).slice(0, 3)
   
@@ -22,7 +22,6 @@ function Home({ verDetalle }) {
           title={pelicula.titulo}
           image={pelicula.poster}
           pelicula={pelicula}
-          onVerDetalle={() => verDetalle(pelicula)}
         />
       ))}
     </main>

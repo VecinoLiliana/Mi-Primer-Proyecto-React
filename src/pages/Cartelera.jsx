@@ -1,6 +1,6 @@
 import MovieCard from "../components/MovieCard"
 
-function Cartelera({ verDetalle }) {
+function Cartelera() {
 
   // Arreglo de películas en cartelera
   const peliculasCartelera = [
@@ -62,7 +62,6 @@ function Cartelera({ verDetalle }) {
           title={pelicula.titulo}
           image={pelicula.poster}
           pelicula={pelicula}
-          onVerDetalle={() => verDetalle(pelicula)}
         />
       ))}
     </main>

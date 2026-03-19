@@ -1,10 +1,9 @@
-//Botón reutilizable importado
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 function MovieCard({ 
   title, 
   image, 
-  onVerDetalle, 
   pelicula
 }) 
 {
@@ -24,10 +23,9 @@ function MovieCard({
           <div style={{ padding:"12px", textAlign:"center" }}>
             <h3>{title}</h3>
             
-            <Button 
-              text="Ver detalle" 
-              OnClick={() => onVerDetalle()}
-            />
+            <Link to={`/pelicula/${pelicula.id}`}>
+              <Button text="Ver detalle" />
+            </Link>
           </div>
     </div>
   );
